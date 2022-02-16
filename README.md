@@ -1,6 +1,6 @@
 # Relaxation-Test
 
-Ontology for the Vickers relaxation testing according to the DIN_EN_ISO_10319-1 standard
+Ontology for the relaxation testing according to the DIN_EN_ISO_10319-1 standard
 
 ## Getting started
 
