@@ -1,6 +1,12 @@
 # Relaxation-Test
 
-Ontology for the relaxation testing according to the DIN_EN_ISO_10319-1 standard
+Tensile Stress Relaxation Test Ontology (TSRTO) has developed for representing the tensile stress relaxation testing process, testing equipment requirements, test pieces charactristics, and related testing parameters and their measurement procedure according to DIN EN ISO 10319-1 standard.
+
+Versions info:
+
+V1 developed using BFO+CCO top-level ontologies.
+
+V2 developed using BFO+IOF top-level ontologies.
 
 ## Getting started
 
