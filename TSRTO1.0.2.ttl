@@ -1,0 +1,690 @@
+@prefix bfo: <http://purl.obolibrary.org/obo/> .
+@prefix cco: <http://www.ontologyrepository.com/CommonCoreOntologies/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix iof: <https://spec.industrialontologies.org/ontology/core/Core/> .
+@prefix mseo: <https://github.com/Mat-O-Lab/MSEO/raw/main/domain/util/readable_bfo_iris.ttl/> .
+@prefix mto: <https://gitlab.com/kupferdigital/ontologies/mechanical-testing-ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tsrto: <https://gitlab.com/kupferdigital/process-graphs/relaxation-test/> .
+
+bfo:contains a owl:ObjectProperty .
+
+bfo:derives_into a owl:ObjectProperty .
+
+bfo:has_function a owl:ObjectProperty .
+
+bfo:has_part a owl:ObjectProperty .
+
+bfo:has_quality a owl:ObjectProperty .
+
+cco:affects a owl:ObjectProperty .
+
+cco:designated_by a owl:ObjectProperty .
+
+cco:has_accessory a owl:ObjectProperty .
+
+cco:has_agent a owl:ObjectProperty .
+
+cco:has_input a owl:ObjectProperty .
+
+cco:has_output a owl:ObjectProperty .
+
+cco:has_process_part a owl:ObjectProperty .
+
+cco:is_input_of a owl:ObjectProperty .
+
+cco:is_made_of a owl:ObjectProperty .
+
+cco:is_measured_by a owl:ObjectProperty .
+
+cco:is_subject_of a owl:ObjectProperty .
+
+cco:occurs_on a owl:ObjectProperty .
+
+cco:process_precedes a owl:ObjectProperty .
+
+cco:process_started_by a owl:ObjectProperty .
+
+cco:uses a owl:ObjectProperty .
+
+mseo:in_accordance_with a owl:ObjectProperty .
+
+tsrto: a owl:Ontology ;
+    dcterms:biblographicCitation "Hossein Beygi Nasrabadi and Birgit Skrotzki, Tensile Stress Relaxation Test Ontology (TSRTO). 2024, www.gitlab.com/kupferdigital/process-graphs/relaxation-test" ;
+    dcterms:created "2024.07.01" ;
+    dcterms:creator "Beygi Nasrabadi, Hossein (www.orcid.org/0000-0002-3092-0532)",
+        "Skrotzki, Birgit" ;
+    dcterms:licence "www.creativecommons.org/licenses/by/4.0/" ;
+    dcterms:title "Tensile Stress Relaxation Test Ontology (TSRTO)" ;
+    rdfs:comment "KupferDigital project (www.materialdigital.de/project/1)",
+        "Tensile Stress Relaxation Test Ontology (TSRTO) has developed for representing the tensile stress relaxation testing process, testing equipment requirements, test pieces charactristics, and related testing parameters and their measurement procedure according to DIN EN ISO 10319-1 standard." ;
+    owl:versionInfo "1.0.2 (BFO, CCO, MSEO, MTO)" .
+
+tsrto:StressRelaxationTestExperiment a owl:NamedIndividual,
+        mto:StressRelaxationTest ;
+    cco:has_accessory tsrto:StressRelaxationExperimentArtifact ;
+    cco:has_input tsrto:StressRelaxationTestPiece ;
+    cco:has_output tsrto:TestDataFile ;
+    cco:occurs_on tsrto:TestDate ;
+    cco:process_started_by tsrto:StressRelaxationTestMeasurement ;
+    mseo:in_accordance_with tsrto:TestStandard .
+
+cco:ActOfArtifactProcessing a owl:Class .
+
+cco:CalendarDateIdentifier a owl:Class .
+
+cco:Day a owl:Class .
+
+cco:DirectiveInformationContentEntity a owl:Class .
+
+cco:Force a owl:Class .
+
+cco:Length a owl:Class .
+
+cco:PortionOfMaterial a owl:Class .
+
+cco:ProportionalRatioMeasurementInformationContentEntity a owl:Class .
+
+cco:ReliabilityMeasurementInformationContentEntity a owl:Class .
+
+cco:ShapeQuality a owl:Class .
+
+cco:SizeQuality a owl:Class .
+
+cco:Speed a owl:Class .
+
+mseo:CrossSection a owl:Class .
+
+mseo:Deformation a owl:Class .
+
+mseo:ElasticModulus a owl:Class .
+
+mseo:File a owl:Class .
+
+mseo:Number a owl:Class .
+
+mseo:Regulation a owl:Class .
+
+mseo:RelaxedStress a owl:Class .
+
+mseo:Specimen a owl:Class .
+
+mseo:UniversalTestingMachine a owl:Class .
+
+mseo:YieldStrenght a owl:Class .
+
+mto:Extensometer a owl:Class .
+
+mto:HeatingDevice a owl:Class .
+
+mto:LoadDisplacementCurve a owl:Class .
+
+mto:ParallelLength a owl:Class .
+
+mto:ResidualStress a owl:Class .
+
+mto:Resolution a owl:Class .
+
+mto:StressRelaxationCurve a owl:Class .
+
+mto:StressRelaxationTest a owl:Class .
+
+mto:StressRelaxationTestEquipment a owl:Class .
+
+mto:StressStrainCurve a owl:Class .
+
+mto:Thermocouple a owl:Class .
+
+tsrto:CoefficientOfProportionality a cco:SizeQuality,
+        owl:NamedIndividual ;
+    cco:affects tsrto:DeterminationOfOriginalCrossSectionArea ;
+    cco:is_measured_by tsrto:TestPieceCoefficientOfProportionality .
+
+tsrto:ExtensometerAccuracy a owl:NamedIndividual,
+        mto:UncertaintyOfMeasurement ;
+    cco:is_measured_by tsrto:MeasurementOfThermocoupleAccuracy .
+
+tsrto:ExtensometerArtifactFunction a cco:ArtifactFunction,
+        owl:NamedIndividual .
+
+tsrto:ExtensometerCalibration a owl:NamedIndividual,
+        mto:ActOfArtifactVerification ;
+    cco:designated_by tsrto:ExtensometerCalibrationData .
+
+tsrto:ExtensometerCalibrationData a cco:DescriptiveInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:ExtensometerGaugeLength a owl:NamedIndividual,
+        mto:GaugeLength ;
+    cco:is_measured_by tsrto:MeasurementOfExtensometerGaugeLength .
+
+tsrto:ExtensometerIdentifier a cco:NonNameIdentifier,
+        owl:NamedIndividual .
+
+tsrto:ExtensometerResolution a owl:NamedIndividual,
+        mto:Resolution ;
+    cco:is_measured_by tsrto:MeasurementOfExtensometerResolution .
+
+tsrto:ExtensometerUncertainty a owl:NamedIndividual,
+        mto:UncertaintyOfMeasurement ;
+    cco:is_measured_by tsrto:MeasurementOfExtensometerUncertainty .
+
+tsrto:HeatingDeviceArtifactFunction a cco:ArtifactFunction,
+        owl:NamedIndividual .
+
+tsrto:HeatingDeviceIdentifier a cco:NonNameIdentifier,
+        owl:NamedIndividual .
+
+tsrto:InitialStrain a owl:NamedIndividual,
+        mseo:Strain ;
+    cco:is_measured_by tsrto:MeasurementOfInitialStrain .
+
+tsrto:InitialStress a owl:NamedIndividual,
+        mseo:Stress ;
+    cco:is_measured_by tsrto:MeasurementOfInitialStress .
+
+tsrto:MaterialProvider a owl:NamedIndividual,
+        iof:MaterialResource ;
+    cco:designated_by tsrto:MaterialProviderName .
+
+tsrto:MaterialProviderName a cco:DescriptiveInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfAppliedLoadingForceDataSet a owl:NamedIndividual,
+        mseo:RawDataSet .
+
+tsrto:MeasurementOfDisplacementDataSet a owl:NamedIndividual,
+        mseo:RawDataSet .
+
+tsrto:MeasurementOfExtensometerGaugeLength a cco:DistanceMeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfExtensometerResolution a cco:MeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfExtensometerUncertainty a cco:MeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfInitialStrain a cco:MeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfInitialStress a cco:MeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfModulusOfElasticity a cco:MeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfNumberOfThermocouples a cco:MeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfOriginalCrossSectionArea a cco:MeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfOriginalGaugeLength a cco:DistanceMeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfPercentageRelaxedStress a owl:NamedIndividual .
+
+tsrto:MeasurementOfPermissibleTemperatureDeviation a cco:MeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfResidualElasticStrain a cco:MeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfResidualPlasticStrain a cco:MeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfResidualStress a cco:MeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfSoakingTimeAtTestTemperature a cco:MeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfStrainRate a cco:MeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfStressRelaxationTimeDataSet a owl:NamedIndividual,
+        mseo:RawDataSet .
+
+tsrto:MeasurementOfTestPieceTotalLength a cco:DistanceMeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfTestPieceparallelLength a cco:DistanceMeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfTestStrainDataSet a owl:NamedIndividual,
+        mseo:AnalysedDataSet .
+
+tsrto:MeasurementOfTestStressDataSet a owl:NamedIndividual,
+        mseo:AnalysedDataSet .
+
+tsrto:MeasurementOfTestTemperature a cco:MeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfThermocoupleAccuracy a cco:ReliabilityMeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfTimeToApplyInitialStrain a cco:MeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MeasurementOfYieldStrength_Rp0.02 a cco:MeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:MetallicMaterial a cco:PortionOfMaterial,
+        owl:NamedIndividual ;
+    cco:designated_by tsrto:TestPieceCompositionIdentifier .
+
+tsrto:ModuludOfElasticityFunction a cco:Algorithm,
+        owl:NamedIndividual ;
+    cco:designated_by tsrto:TestStandard .
+
+tsrto:ModulusOfElasticity a owl:NamedIndividual,
+        mseo:ElasticModulus ;
+    cco:is_input_of tsrto:DeterminationOfResidualStrain ;
+    cco:is_measured_by tsrto:MeasurementOfModulusOfElasticity .
+
+tsrto:NumberOfThermocouples a owl:NamedIndividual,
+        mseo:Number ;
+    cco:is_measured_by tsrto:MeasurementOfNumberOfThermocouples .
+
+tsrto:OriginalCrossSectionArea a owl:NamedIndividual,
+        mseo:CrossSection ;
+    cco:is_input_of tsrto:StressCalculation ;
+    cco:is_measured_by tsrto:MeasurementOfOriginalCrossSectionArea .
+
+tsrto:OriginalGaugeLength a owl:NamedIndividual,
+        mto:GaugeLength ;
+    cco:is_input_of tsrto:StrainCalculation ;
+    cco:is_measured_by tsrto:MeasurementOfOriginalGaugeLength .
+
+tsrto:PercentageRelaxedStress a owl:NamedIndividual,
+        mseo:RelaxedStress ;
+    cco:is_measured_by tsrto:MeasurementOfPercentageRelaxedStress .
+
+tsrto:PermissibleTemperatureDeviation a cco:Temperature,
+        owl:NamedIndividual ;
+    cco:designated_by tsrto:MeasurementOfPermissibleTemperatureDeviation .
+
+tsrto:PlottedLoadDisplacementCurve a owl:NamedIndividual,
+        mto:LoadDisplacementCurve .
+
+tsrto:PlottedStressRelaxationCurve a owl:NamedIndividual,
+        mto:StressRelaxationCurve ;
+    cco:is_input_of tsrto:DeterminationOfResidualStress .
+
+tsrto:PlottedStressStrainCurve a owl:NamedIndividual,
+        mto:StressStrainCurve ;
+    cco:is_input_of tsrto:DeterminationOfModulusOfElasticity,
+        tsrto:DeterminationOfResidualStrain,
+        tsrto:DeterminationOfYieldStrength .
+
+tsrto:ResidualElasticStrain a owl:NamedIndividual,
+        mseo:ResidualStrain ;
+    cco:is_measured_by tsrto:MeasurementOfResidualElasticStrain .
+
+tsrto:ResidualPlasticStrain a owl:NamedIndividual,
+        mseo:ResidualStrain ;
+    cco:is_measured_by tsrto:MeasurementOfResidualPlasticStrain .
+
+tsrto:ResidualStrainFunction a cco:Algorithm,
+        owl:NamedIndividual ;
+    cco:designated_by tsrto:TestStandard .
+
+tsrto:ResidualStressFunction a cco:Algorithm,
+        owl:NamedIndividual ;
+    cco:designated_by tsrto:TestStandard .
+
+tsrto:ResidualStress_ a owl:NamedIndividual,
+        mto:ResidualStress ;
+    cco:is_measured_by tsrto:MeasurementOfResidualStress .
+
+tsrto:SoakingTimeAtTestTemperature a owl:NamedIndividual,
+        mseo:ExperimentTime ;
+    cco:is_measured_by tsrto:MeasurementOfSoakingTimeAtTestTemperature .
+
+tsrto:StrainFunction a cco:Algorithm,
+        owl:NamedIndividual ;
+    cco:designated_by tsrto:TestStandard .
+
+tsrto:StrainRate a cco:Speed,
+        owl:NamedIndividual ;
+    cco:is_measured_by tsrto:MeasurementOfStrainRate .
+
+tsrto:StressFunction a cco:Algorithm,
+        owl:NamedIndividual ;
+    cco:designated_by tsrto:TestStandard .
+
+tsrto:StressRelaxationTestMeasurement a cco:ActOfMeasuring,
+        owl:NamedIndividual ;
+    bfo:has_part tsrto:StressRelaxationTestPiece ;
+    cco:has_process_part tsrto:DeterminationOfOriginalCrossSectionArea,
+        tsrto:ExtensionApplication,
+        tsrto:HeatingTheSample,
+        tsrto:MarkingTheOriginalGaugeLength,
+        tsrto:StressRelaxationMeasuring ;
+    cco:is_measured_by tsrto:StressRelaxationExperimentArtifact ;
+    cco:process_precedes tsrto:TStressRelaxationTestMeasurementAnalysis .
+
+tsrto:StressRelaxationTestPieceFunction a cco:ArtifactFunction,
+        owl:NamedIndividual .
+
+tsrto:StressRelaxationTestingMachineArtifactFunction a cco:ArtifactFunction,
+        owl:NamedIndividual .
+
+tsrto:StressRelaxationTestingMachineIdentifier a cco:NonNameIdentifier,
+        owl:NamedIndividual .
+
+tsrto:StressRelaxationTime a owl:NamedIndividual,
+        mseo:ExperimentTime ;
+    cco:is_input_of tsrto:PlottingTestCurve ;
+    cco:is_measured_by tsrto:MeasurementOfStressRelaxationTimeDataSet .
+
+tsrto:TStressRelaxationTestMeasurementAnalysis a owl:NamedIndividual,
+        mseo:ActOfAnalysing ;
+    cco:has_process_part tsrto:DeterminationOfInitialStress,
+        tsrto:DeterminationOfModulusOfElasticity,
+        tsrto:DeterminationOfResidualStrain,
+        tsrto:DeterminationOfResidualStress,
+        tsrto:DeterminationOfYieldStrength,
+        tsrto:PlottingTestCurve,
+        tsrto:StrainCalculation,
+        tsrto:StressCalculation .
+
+tsrto:TestDataFile a owl:NamedIndividual,
+        mseo:File ;
+    cco:designated_by tsrto:TestDateFileLocation .
+
+tsrto:TestDate a cco:Day,
+        owl:NamedIndividual ;
+    cco:designated_by tsrto:TestDateIdentifier .
+
+tsrto:TestDateFileLocation a cco:DirectiveInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:TestDateIdentifier a cco:CalendarDateIdentifier,
+        owl:NamedIndividual .
+
+tsrto:TestDisplacement a owl:NamedIndividual,
+        mseo:Deformation ;
+    cco:is_input_of tsrto:PlottingTestCurve,
+        tsrto:StrainCalculation ;
+    cco:is_measured_by tsrto:MeasurementOfDisplacementDataSet .
+
+tsrto:TestForce a cco:Force,
+        owl:NamedIndividual ;
+    cco:is_input_of tsrto:PlottingTestCurve,
+        tsrto:StressCalculation ;
+    cco:is_measured_by tsrto:MeasurementOfAppliedLoadingForceDataSet .
+
+tsrto:TestPieceCoefficientOfProportionality a cco:ProportionalRatioMeasurementInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:TestPieceCompositionIdentifier a cco:NonNameIdentifier,
+        owl:NamedIndividual .
+
+tsrto:TestPieceCrossSectionShape a cco:ShapeQuality,
+        owl:NamedIndividual ;
+    cco:affects tsrto:DeterminationOfOriginalCrossSectionArea ;
+    cco:designated_by tsrto:TestPieceCrossSectionShapeIdentifier .
+
+tsrto:TestPieceCrossSectionShapeIdentifier a cco:NonNameIdentifier,
+        owl:NamedIndividual .
+
+tsrto:TestPieceIndenter a cco:NonNameIdentifier,
+        owl:NamedIndividual .
+
+tsrto:TestPieceManufacturing a owl:NamedIndividual,
+        iof:ManufacturingProcess ;
+    bfo:has_part tsrto:TransportFromProducer .
+
+tsrto:TestPieceParallelLength a owl:NamedIndividual,
+        mto:ParallelLength ;
+    cco:affects tsrto:MarkingTheOriginalGaugeLength ;
+    cco:is_measured_by tsrto:MeasurementOfTestPieceparallelLength .
+
+tsrto:TestPiecePreparation a cco:ActOfArtifactProcessing,
+        owl:NamedIndividual ;
+    cco:designated_by tsrto:TestPiecePreparationMethod .
+
+tsrto:TestPiecePreparationMethod a cco:DescriptiveInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:TestPieceTotalLength a cco:Length,
+        owl:NamedIndividual ;
+    cco:affects tsrto:MarkingTheOriginalGaugeLength ;
+    cco:is_measured_by tsrto:MeasurementOfTestPieceTotalLength .
+
+tsrto:TestStandardIdentifier a cco:NonNameIdentifier,
+        owl:NamedIndividual .
+
+tsrto:TestStrain a owl:NamedIndividual,
+        mseo:Strain ;
+    cco:is_input_of tsrto:DeterminationOfModulusOfElasticity,
+        tsrto:DeterminationOfResidualStrain,
+        tsrto:PlottingTestCurve ;
+    cco:is_measured_by tsrto:MeasurementOfTestStrainDataSet .
+
+tsrto:TestStress a owl:NamedIndividual,
+        mseo:Stress ;
+    cco:is_input_of tsrto:DeterminationOfInitialStress,
+        tsrto:DeterminationOfModulusOfElasticity,
+        tsrto:DeterminationOfResidualStress,
+        tsrto:DeterminationOfYieldStrength,
+        tsrto:PlottingTestCurve ;
+    cco:is_measured_by tsrto:MeasurementOfTestStressDataSet .
+
+tsrto:TestTemperature a cco:Temperature,
+        owl:NamedIndividual ;
+    cco:is_measured_by tsrto:MeasurementOfTestTemperature .
+
+tsrto:ThermocoupleArtifactFunction a cco:ArtifactFunction,
+        owl:NamedIndividual .
+
+tsrto:ThermocoupleCalibration a owl:NamedIndividual,
+        mto:ActOfArtifactVerification ;
+    cco:designated_by tsrto:ThermocoupleCalibrationData .
+
+tsrto:ThermocoupleCalibrationData a cco:DescriptiveInformationContentEntity,
+        owl:NamedIndividual .
+
+tsrto:ThermocoupleIdentifier a cco:NonNameIdentifier,
+        owl:NamedIndividual .
+
+tsrto:TimeToApplyInitialStrain a owl:NamedIndividual,
+        mseo:ExperimentTime ;
+    cco:is_measured_by tsrto:MeasurementOfTimeToApplyInitialStrain .
+
+tsrto:TransportFromProducer a owl:NamedIndividual,
+        iof:TransportProcess ;
+    cco:has_agent tsrto:MaterialProvider .
+
+tsrto:TypeOfStressRelaxationTestingMachine a cco:NonNameIdentifier,
+        owl:NamedIndividual .
+
+tsrto:YieldStrengthFunction a cco:Algorithm,
+        owl:NamedIndividual ;
+    cco:designated_by tsrto:TestStandard .
+
+tsrto:YieldStrength_Rp0.02 a owl:NamedIndividual,
+        mseo:YieldStrenght ;
+    cco:is_measured_by tsrto:MeasurementOfYieldStrength_Rp0.02 .
+
+iof:ManufacturingProcess a owl:Class .
+
+iof:MaterialResource a owl:Class .
+
+iof:TransportProcess a owl:Class .
+
+cco:Temperature a owl:Class .
+
+mseo:AnalysedDataSet a owl:Class .
+
+mseo:ResidualStrain a owl:Class .
+
+mseo:Strain a owl:Class .
+
+mseo:Stress a owl:Class .
+
+mto:ActOfArtifactVerification a owl:Class .
+
+mto:GaugeLength a owl:Class .
+
+mto:UncertaintyOfMeasurement a owl:Class .
+
+tsrto:ExtensionApplication a cco:ActOfMeasuring,
+        owl:NamedIndividual ;
+    cco:has_accessory tsrto:StressRelaxationTestingMachine ;
+    cco:has_output tsrto:InitialStrain,
+        tsrto:StrainRate,
+        tsrto:TimeToApplyInitialStrain ;
+    cco:process_precedes tsrto:StressRelaxationMeasuring .
+
+tsrto:ExtensionMeasuringDevice a owl:NamedIndividual,
+        mto:Extensometer ;
+    bfo:has_function tsrto:ExtensometerArtifactFunction ;
+    bfo:has_quality tsrto:ExtensometerResolution,
+        tsrto:ExtensometerUncertainty ;
+    cco:designated_by tsrto:ExtensometerIdentifier ;
+    cco:has_process_part tsrto:ExtensometerCalibration .
+
+tsrto:HeatingTheSample a cco:ActOfMeasuring,
+        owl:NamedIndividual ;
+    cco:has_accessory tsrto:RelaxationTestMachineHeatingDevice,
+        tsrto:TemperatureMeasuringDevice ;
+    cco:has_output tsrto:SoakingTimeAtTestTemperature,
+        tsrto:TestTemperature ;
+    cco:process_precedes tsrto:ExtensionApplication .
+
+tsrto:RelaxationTestMachineHeatingDevice a owl:NamedIndividual,
+        mto:HeatingDevice ;
+    bfo:has_function tsrto:HeatingDeviceArtifactFunction ;
+    cco:designated_by tsrto:HeatingDeviceIdentifier ;
+    cco:has_output tsrto:PermissibleTemperatureDeviation .
+
+tsrto:StressRelaxationExperimentArtifact a owl:NamedIndividual,
+        mto:StressRelaxationTestEquipment ;
+    bfo:contains tsrto:ExtensionMeasuringDevice,
+        tsrto:RelaxationTestMachineHeatingDevice,
+        tsrto:StressRelaxationTestingMachine,
+        tsrto:TemperatureMeasuringDevice .
+
+tsrto:StressRelaxationMeasuring a cco:ActOfMeasuring,
+        owl:NamedIndividual ;
+    cco:has_accessory tsrto:StressRelaxationTestingMachine ;
+    cco:has_output tsrto:TestDisplacement,
+        tsrto:TestForce ;
+    cco:occurs_on tsrto:StressRelaxationTime ;
+    cco:process_precedes tsrto:StressCalculation .
+
+tsrto:StressRelaxationTestPiece a owl:NamedIndividual,
+        mseo:Specimen ;
+    bfo:has_function tsrto:StressRelaxationTestPieceFunction ;
+    bfo:has_quality tsrto:CoefficientOfProportionality,
+        tsrto:TestPieceCrossSectionShape ;
+    cco:designated_by tsrto:TestPieceIndenter ;
+    cco:has_output tsrto:TestPieceParallelLength,
+        tsrto:TestPieceTotalLength ;
+    cco:has_process_part tsrto:TestPieceManufacturing,
+        tsrto:TestPiecePreparation ;
+    cco:is_made_of tsrto:MetallicMaterial .
+
+tsrto:TemperatureMeasuringDevice a owl:NamedIndividual,
+        mto:Thermocouple ;
+    bfo:has_function tsrto:ThermocoupleArtifactFunction ;
+    bfo:has_quality tsrto:ExtensometerAccuracy ;
+    cco:designated_by tsrto:ThermocoupleIdentifier ;
+    cco:has_output tsrto:NumberOfThermocouples ;
+    cco:has_process_part tsrto:ThermocoupleCalibration .
+
+mseo:ExperimentTime a owl:Class .
+
+mseo:RawDataSet a owl:Class .
+
+tsrto:DeterminationOfInitialStress a owl:NamedIndividual,
+        mseo:ActOfAnalysing ;
+    bfo:derives_into tsrto:InitialStress ;
+    cco:process_precedes tsrto:DeterminationOfResidualStress .
+
+tsrto:DeterminationOfOriginalCrossSectionArea a cco:ActOfMeasuring,
+        owl:NamedIndividual ;
+    cco:has_output tsrto:OriginalCrossSectionArea ;
+    cco:process_precedes tsrto:MarkingTheOriginalGaugeLength .
+
+tsrto:StressRelaxationTestingMachine a owl:NamedIndividual,
+        mseo:UniversalTestingMachine ;
+    bfo:has_function tsrto:StressRelaxationTestingMachineArtifactFunction ;
+    cco:designated_by tsrto:StressRelaxationTestingMachineIdentifier ;
+    cco:is_subject_of tsrto:TypeOfStressRelaxationTestingMachine .
+
+cco:DescriptiveInformationContentEntity a owl:Class .
+
+cco:DistanceMeasurementInformationContentEntity a owl:Class .
+
+tsrto:DeterminationOfResidualStress a owl:NamedIndividual,
+        mseo:ActOfAnalysing ;
+    bfo:derives_into tsrto:PercentageRelaxedStress,
+        tsrto:ResidualStress_ ;
+    cco:process_precedes tsrto:DeterminationOfResidualStrain ;
+    cco:uses tsrto:ResidualStressFunction .
+
+tsrto:DeterminationOfYieldStrength a owl:NamedIndividual,
+        mseo:ActOfAnalysing ;
+    bfo:derives_into tsrto:YieldStrength_Rp0.02 ;
+    cco:process_precedes tsrto:DeterminationOfModulusOfElasticity ;
+    cco:uses tsrto:YieldStrengthFunction .
+
+tsrto:MarkingTheOriginalGaugeLength a cco:ActOfMeasuring,
+        owl:NamedIndividual ;
+    cco:has_accessory tsrto:ExtensionMeasuringDevice ;
+    cco:has_output tsrto:ExtensometerGaugeLength,
+        tsrto:OriginalGaugeLength ;
+    cco:process_precedes tsrto:HeatingTheSample .
+
+tsrto:StrainCalculation a owl:NamedIndividual,
+        mseo:ActOfAnalysing ;
+    bfo:derives_into tsrto:TestStrain ;
+    cco:process_precedes tsrto:PlottingTestCurve ;
+    cco:uses tsrto:StrainFunction .
+
+tsrto:StressCalculation a owl:NamedIndividual,
+        mseo:ActOfAnalysing ;
+    bfo:derives_into tsrto:TestStress ;
+    cco:process_precedes tsrto:StrainCalculation ;
+    cco:uses tsrto:StressFunction .
+
+cco:ArtifactFunction a owl:Class .
+
+tsrto:DeterminationOfModulusOfElasticity a owl:NamedIndividual,
+        mseo:ActOfAnalysing ;
+    bfo:derives_into tsrto:ModulusOfElasticity ;
+    cco:process_precedes tsrto:DeterminationOfInitialStress ;
+    cco:uses tsrto:ModuludOfElasticityFunction .
+
+tsrto:DeterminationOfResidualStrain a owl:NamedIndividual,
+        mseo:ActOfAnalysing ;
+    bfo:derives_into tsrto:ResidualElasticStrain,
+        tsrto:ResidualPlasticStrain ;
+    cco:uses tsrto:ResidualStrainFunction .
+
+cco:ActOfMeasuring a owl:Class .
+
+cco:Algorithm a owl:Class .
+
+tsrto:PlottingTestCurve a owl:NamedIndividual,
+        mseo:ActOfAnalysing ;
+    cco:has_output tsrto:PlottedLoadDisplacementCurve,
+        tsrto:PlottedStressRelaxationCurve,
+        tsrto:PlottedStressStrainCurve ;
+    cco:process_precedes tsrto:DeterminationOfYieldStrength .
+
+tsrto:TestStandard a owl:NamedIndividual,
+        mseo:Regulation ;
+    cco:designated_by tsrto:TestStandardIdentifier .
+
+cco:NonNameIdentifier a owl:Class .
+
+mseo:ActOfAnalysing a owl:Class .
+
+cco:MeasurementInformationContentEntity a owl:Class .
+
